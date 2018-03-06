@@ -24,12 +24,12 @@ const products = [
 var basket = [];
 
 stdin.addListener('data', function(userInput) {
-  const productCodes = userInput.toString().trim().split(',').map(value => value.trim());
+  const productCodesCsv = userInput.toString().trim();
 
-  productCodes.forEach(productCode => cashier.addProduct(productCode));
+  cashier.addProducts(basket, productCodesCsv);
 
-  const total = cashier.getTotal();
+  const total = cashier.getTotal(basket);
 
-  promptMessage(`> ${productCodes.join(',')} -> ${total}`);
+  promptMessage(`> ${productCodesCsv} -> ${total}`);
   promptMessage('\n> ');
 });
