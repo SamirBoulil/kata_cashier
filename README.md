@@ -8,8 +8,8 @@ A code dojo made in 1h by iteration of 10 minutes
 
 ## Run
 
-    node index.js
+    yarn cashier
 
 ## Test
 
-    ./node_modules/.bin/jest
+    yarn test

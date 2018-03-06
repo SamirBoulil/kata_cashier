@@ -1,4 +1,9 @@
 {
+  "license": "MIT",
+  "scripts": {
+    "cashier": "node index.js",
+    "test": "./node_modules/.bin/jest"
+  },
   "devDependencies": {
     "jest": "^22.4.2"
   }
