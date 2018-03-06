@@ -1,3 +1,5 @@
+const cashier = require ('./cashier');
+
 const stdin = process.openStdin();
 
 const promptMessage = (message = '') => process.stdout.write(message);
@@ -22,16 +24,12 @@ const products = [
 var basket = [];
 
 stdin.addListener('data', function(userInput) {
-  const productCode = userInput.toString().trim();
+  const productCodes = userInput.toString().trim().split(',').map(value => value.trim());
 
-  const productToBuy = products.find(currentProduct => productCode === currentProduct.code)
+  productCodes.forEach(productCode => cashier.addProduct(productCode));
 
-  if (undefined !== productToBuy) {
-    basket.push(productToBuy);
-  }
+  const total = cashier.getTotal();
 
-  const total = basket.reduce((previous, current) => previous + current.price, 0);
-
-  promptMessage(`> ${productCode} -> ${total}`);
+  promptMessage(`> ${productCodes.join(',')} -> ${total}`);
   promptMessage('\n> ');
 });
